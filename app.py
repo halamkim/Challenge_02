@@ -18,20 +18,14 @@ from qualifier.utils.calculators import (
     calculate_monthly_debt_ratio,
     calculate_loan_to_value_ratio,
 )
+from qualifier.utils.fileio import (save_csv)
 
 from qualifier.filters.max_loan_size import filter_max_loan_size
 from qualifier.filters.credit_score import filter_credit_score
 from qualifier.filters.debt_to_income import filter_debt_to_income
 from qualifier.filters.loan_to_value import filter_loan_to_value
 
-def save_csv(filter_bank_list):
-    csvpath = Path("filter_bank_list.csv")
-    header = ["Lender" , "Max Loan Amount" ,"Max LTV" , "Max DTI" , "Min Credit Score" , "Interest Rate"]
-    with open(csvpath, "w", newline='') as csvfile:
-        csvwriter = csv.writer(csvfile)
-        csvwriter.writerow(header)           # write a header
-        for row in filter_bank_list:         # write a list of filtered bank data
-            csvwriter.writerow(row) 
+
 
 def load_bank_data():
     """Ask for the file path to the latest banking data and load the CSV file.

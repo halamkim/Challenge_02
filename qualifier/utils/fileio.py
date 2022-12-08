@@ -28,3 +28,12 @@ def load_csv(csvpath):
         for row in csvreader:
             data.append(row)
     return data
+
+def save_csv(filter_bank_list):
+    csvpath = Path("filter_bank_list.csv")
+    header = ["Lender" , "Max Loan Amount" ,"Max LTV" , "Max DTI" , "Min Credit Score" , "Interest Rate"]
+    with open(csvpath, "w", newline='') as csvfile:
+        csvwriter = csv.writer(csvfile)
+        csvwriter.writerow(header)           # write a header
+        for row in filter_bank_list:         # write a list of filtered bank data
+            csvwriter.writerow(row) 
