@@ -31,7 +31,8 @@ def load_csv(csvpath):
     return data
 
 def save_csv(filter_bank_list):
-    csvpath = Path("filter_bank_list.csv")
+    desired_file_name = input("File name for your qualifying loans: ")
+    csvpath = Path(f"{desired_file_name}.csv")
     header = ["Lender" , "Max Loan Amount" ,"Max LTV" , "Max DTI" , "Min Credit Score" , "Interest Rate"]
     with open(csvpath, "w", newline='') as csvfile:
         csvwriter = csv.writer(csvfile)
