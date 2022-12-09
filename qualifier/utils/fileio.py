@@ -6,6 +6,7 @@ This contains a helper function for loading and saving CSV files.
 """
 import csv
 from pathlib import Path 
+import questionary
 
 
 def load_csv(csvpath):
@@ -31,7 +32,7 @@ def load_csv(csvpath):
     return data
 
 def save_csv(filter_bank_list):
-    desired_file_name = input("File name for your qualifying loans: ")
+    desired_file_name = questionary.text("File name for your qualifying loans: ").ask()
     csvpath = Path(f"{desired_file_name}.csv")
     header = ["Lender" , "Max Loan Amount" ,"Max LTV" , "Max DTI" , "Min Credit Score" , "Interest Rate"]
     with open(csvpath, "w", newline='') as csvfile:
