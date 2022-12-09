@@ -113,6 +113,12 @@ def save_qualifying_loans(qualifying_loans):
     """
     # @TODO: Complete the usability dialog for savings the CSV Files.
     # YOUR CODE HERE!
+    confirm = questionary.confirm("Would you like to save your qualifying loans?").ask()    #asks for confirmation
+    if confirm:                                                                             #if yes, save the csv file 
+        save_csv(qualifying_loans) 
+    else: 
+        sys.exit("Thank you for using our application!")
+
 
 
 def run():
@@ -132,7 +138,7 @@ def run():
     # Save qualifying loans
     save_qualifying_loans(qualifying_loans)
 
-    save_csv(qualifying_loans)
+
 
 if __name__ == "__main__":
     fire.Fire(run)
