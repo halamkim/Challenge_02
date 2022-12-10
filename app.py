@@ -101,6 +101,8 @@ def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_valu
     bank_data_filtered = filter_loan_to_value(loan_to_value_ratio, bank_data_filtered)
 
     print(f"Found {len(bank_data_filtered)} qualifying loans")
+    if len(bank_data_filtered) ==0:
+        sys.exit("Thank you for using our service.")
 
     return bank_data_filtered
 
