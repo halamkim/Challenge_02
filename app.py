@@ -101,6 +101,7 @@ def find_qualifying_loans(bank_data, credit_score, debt, income, loan, home_valu
     bank_data_filtered = filter_loan_to_value(loan_to_value_ratio, bank_data_filtered)
 
     print(f"Found {len(bank_data_filtered)} qualifying loans")
+    # if user does not have any qualifying loans, this lets the service to exit without prompting the user to save as a csv file. 
     if len(bank_data_filtered) ==0:
         sys.exit("Thank you for using our service.")
 
@@ -118,8 +119,8 @@ def save_qualifying_loans(qualifying_loans):
     confirm = questionary.confirm("Would you like to save your qualifying loans?").ask()    #asks for confirmation
     if confirm:                                                                             #if yes, save the csv file 
         save_csv(qualifying_loans) 
-    else: 
-        sys.exit("Thank you for using our application!")
+    else:               
+        sys.exit("Thank you for using our application!")       #gives  user the option to not save the file
 
 
 
